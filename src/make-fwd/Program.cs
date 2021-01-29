@@ -4,8 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using MimeKit;
-using MimeKit.Encodings;
-using MimeKit.Utils;
 
 namespace make_fwd
 {
@@ -38,7 +36,7 @@ namespace make_fwd
             outgoing.Subject = "Fwd: " + message.Subject;
 
             var attachments = GetMessageAttachments(message);
-            var plain = MakeTextBodyPart(message, GetPlainTextForwardedHeader(message));
+            var plain = MakeTextBodyPart(message, message.GetPlainTextForwardedHeader());
             var html = GetHtmlBodyPart(message);
 
             var messagePart = GetMessagePart(plain, html);
@@ -66,43 +64,6 @@ namespace make_fwd
 
             return outgoing;
         }
-        private static string GetPlainTextForwardedHeader(MimeMessage message)
-        {
-            const string fwd = @"
-
-    ----- Forwarded Message -----
-    From: %{FROM}%
-    Date : %{DATE}%
-    To: %{TO}%
-    Subject : %{SUBJECT}%
-    
-";
-
-            return fwd
-                .Replace("%{FROM}%", FormatAddressList(message.From))
-                .Replace("%{TO}%", FormatAddressList(message.To))
-                .Replace("%{DATE}%", message.Date.ToString("R"))
-                .Replace("%{SUBJECT}%", message.Subject)
-                ;
-        }
-
-        private static string FormatAddressList(InternetAddressList to)
-        {
-            var addresses = new StringBuilder();
-            foreach (var address in to)
-            {
-                addresses
-                    .Append(address)
-                    .Append(", ")
-                    ;
-            }
-
-            return addresses
-                .Remove(addresses.Length - 2, 2)
-                .ToString()
-                ;
-        }
-
         private static MimeEntity MakeTextBodyPart(MimeMessage message, string header)
         {
             var text = new StringBuilder(header);
@@ -120,33 +81,10 @@ namespace make_fwd
             var textPart = new TextPart("plain")
             {
                 ContentTransferEncoding = ContentEncoding.QuotedPrintable,
-                Text = EncodeQuotedPrintableText(text.ToString()),
+                Text = FormatHelper.EncodeQuotedPrintableText(text.ToString()),
             };
 
             return textPart;
-        }
-
-        private static string EncodeQuotedPrintableText(string text)
-        {
-            var encoder = new QuotedPrintableEncoder();
-            var buffer = Encoding.UTF8.GetBytes(text);
-            var multiplier = 3.0d;
-
-            while (true)
-            {
-                try
-                {
-                    var length = (int)Math.Floor(buffer.Length * multiplier);
-                    var output = new byte[length];
-                    var count = encoder.Encode(buffer, 0, buffer.Length, output);
-
-                    return Encoding.ASCII.GetString(output, 0, count);
-                }
-                catch (ArgumentException)
-                {
-                    multiplier *= 1.44;
-                }
-            }
         }
 
         private static MimeEntity GetMessagePart(MimeEntity plain, MimeEntity html)
