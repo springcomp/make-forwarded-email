@@ -9,8 +9,8 @@ namespace make_fwd.Tests
         public void FormatHelper_QuotedPrintablePlainText()
         {
             const string plainText = @"
-Ce message est envoyé depuis Outlook à destination de maskedbox.space.
-Ceci est pour tester la chaîne de redirection.
+Ce message est envoyÃ© depuis Outlook Ã  destination de maskedbox.space.
+Ceci est pour tester la chaÃ®ne de redirection.
 
 Provenance : Courrier<https://go.microsoft.com/fwlink/?LinkId=3D550986> pour Windows 10";
 
