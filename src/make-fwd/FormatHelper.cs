@@ -28,6 +28,5 @@ namespace make_fwd
                 }
             }
         }
-
     }
 }
