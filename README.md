@@ -8,5 +8,5 @@ as would be the case when forwarding an email from a client.
 
 ```
 ~# wget https://masked.blob.core.windows.net/debian/make-forwarded-email.deb
-~# dpkg -i masked-forwarded-email.deb
+~# dpkg -i make-forwarded-email.deb
 ```
