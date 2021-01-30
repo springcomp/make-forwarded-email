@@ -2,5 +2,4 @@
 
 chmod +x /opt/make-forwarded-email/make-forwarded-email
 
-ln -s /usr/local/bin/make-forwarded-email /opt/make-forwarded-email/make-forwarded-email
-
+ln -s /opt/make-forwarded-email/make-forwarded-email /usr/local/bin/make-forwarded-email 
