@@ -1,5 +1,5 @@
 #!/bin/sh
 
-chmod +x /opt/make-forwarded-email/make-forwarded-email
+chmod +x /opt/masked-emails/make-forwarded-email/make-forwarded-email
 
-ln -s /opt/make-forwarded-email/make-forwarded-email /usr/local/bin/make-forwarded-email 
+ln -s /opt/masked-emails/make-forwarded-email/make-forwarded-email /usr/local/bin/make-forwarded-email 

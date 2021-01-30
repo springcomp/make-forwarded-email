@@ -6,7 +6,7 @@ before_build:
 
 build_script:
   - sh: dotnet test /home/appveyor/projects/make-forwarded-email/src/make-fwd.Tests/
-  - sh: dotnet publish -c Release /home/appveyor/projects/make-forwarded-email/src/make-fwd/ --self-contained --runtime linux-x64 --output /home/appveyor/projects/make-forwarded-email/make-forwarded-email/opt/make-forwarded-email/
+  - sh: dotnet publish -c Release /home/appveyor/projects/make-forwarded-email/src/make-fwd/ --self-contained --runtime linux-x64 --output /home/appveyor/projects/make-forwarded-email/make-forwarded-email/opt/masked-emails/make-forwarded-email/
 
 after_build:
   - sh: dos2unix /home/appveyor/projects/make-forwarded-email/make-forwarded-email/DEBIAN/config
