@@ -17,7 +17,7 @@ namespace make_fwd
         }
         public static MimeEntity MakeForwardedTextPlainPart(this MimeMessage message, string rawText)
         {
-            return MakeTextPart("plain", rawText);
+            return rawText == null ? null : MakeTextPart("plain", rawText);
         }
 
         public static string GetForwardedPlainTextContent(this MimeMessage message)
@@ -100,7 +100,7 @@ namespace make_fwd
         }
         public static MimeEntity MakeForwardedHtmlPart(this MimeMessage message, string html)
         {
-            return MakeTextPart("html", html);
+            return html == null ? null : MakeTextPart("html", html);
         }
 
         public static string GetForwardedHtmlDocument(this MimeMessage message)
