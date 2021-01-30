@@ -103,7 +103,20 @@ namespace make_fwd
 
         private static IList<MimePart> GetMessageAttachments(MimeMessage message)
         {
-            return new List<MimePart>();
+            var attachments = new List<MimePart>();
+            var iter = new MimeIterator(message);
+
+            // collect our list of attachments and their parent multiparts
+            while (iter.MoveNext())
+            {
+                var multipart = iter.Parent as Multipart;
+                var part = iter.Current as MimePart;
+
+                if (multipart != null && part != null && part.IsAttachment)
+                    attachments.Add(part);
+            }
+
+            return attachments;
         }
     }
 }
