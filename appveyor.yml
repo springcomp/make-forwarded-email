@@ -19,7 +19,7 @@ after_build:
   - sh: chmod 755 /home/appveyor/projects/make-forwarded-email/make-forwarded-email/DEBIAN/postrm
   - sh: dos2unix /home/appveyor/projects/make-forwarded-email/make-forwarded-email/DEBIAN/prerm
   - sh: chmod 755 /home/appveyor/projects/make-forwarded-email/make-forwarded-email/DEBIAN/prerm
-  - sh: fakeroot dpkg --build /home/appveyor/projects/make-forwarded-email/masked-emails-daemon
+  - sh: fakeroot dpkg --build /home/appveyor/projects/make-forwarded-email/make-forwarded-email
 
 artifacts:
   - path: '**\*deb'
