@@ -17,7 +17,7 @@ namespace make_fwd
             // TODO: file exists?
             // TODO: configurable sender no-reply@masked-emails.me
 
-            // TODO: attachments
+            // TODO: -o --output
 
             var input = args[0];
             var recipient = args[1];
