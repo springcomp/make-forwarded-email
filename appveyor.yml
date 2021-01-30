@@ -1,0 +1,36 @@
+image: ubuntu
+
+before_build:
+  - sh: sudo apt-get update
+  - sh: sudo apt-get install -y fakeroot dos2unix
+
+build_script:
+  - sh: dotnet test /home/appveyor/projects/make-forwarded-email/src/make-fwd.Tests/
+  - sh: dotnet publish -c Release /home/appveyor/projects/make-forwarded-email/src/make-fwd/ --self-contained --runtime linux-x64 --output /home/appveyor/projects/make-forwarded-email/make-forwarded-email/opt/make-forwarded-email/
+
+after_build:
+  - sh: dos2unix /home/appveyor/projects/make-forwarded-email/make-forwarded-email/DEBIAN/config
+  - sh: chmod 755 /home/appveyor/projects/make-forwarded-email/make-forwarded-email/DEBIAN/config
+  - sh: dos2unix /home/appveyor/projects/make-forwarded-email/make-forwarded-email/DEBIAN/control
+  - sh: chmod 755 /home/appveyor/projects/make-forwarded-email/make-forwarded-email/DEBIAN/control
+  - sh: dos2unix /home/appveyor/projects/make-forwarded-email/make-forwarded-email/DEBIAN/postinst
+  - sh: chmod 755 /home/appveyor/projects/make-forwarded-email/make-forwarded-email/DEBIAN/postinst
+  - sh: dos2unix /home/appveyor/projects/make-forwarded-email/make-forwarded-email/DEBIAN/postrm
+  - sh: chmod 755 /home/appveyor/projects/make-forwarded-email/make-forwarded-email/DEBIAN/postrm
+  - sh: dos2unix /home/appveyor/projects/make-forwarded-email/make-forwarded-email/DEBIAN/prerm
+  - sh: chmod 755 /home/appveyor/projects/make-forwarded-email/make-forwarded-email/DEBIAN/prerm
+  - sh: fakeroot dpkg --build /home/appveyor/projects/make-forwarded-email/masked-emails-daemon
+
+artifacts:
+  - path: '**\*deb'
+    type: file
+
+deploy:
+  provider: AzureBlob
+  storage_account_name: masked
+  storage_access_key:
+    secure: HmiE9NOgUN/dsziSQGtM6nntxKrwGYQUdCeUf0DusKrtYUUwYS+oQPHkBd/kRPzETtVFZbaqnDPcYJ8A4qED2LIrmAZzNSDbaE5Ix+gyC22368xpSGT40dosTpoqpA2Y
+  container: debian
+  artifact: make-forwarded-email.deb
+  unzip: false
+  set_content_type: false
