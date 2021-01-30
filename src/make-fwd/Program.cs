@@ -9,15 +9,22 @@ namespace make_fwd
 {
     class Program
     {
-        const string INDENT = "   ";
+        const string SENDER = "no-reply@masked-emails.me";
 
         static void Main(string[] args)
         {
+            // TODO: command-line handling
+            // TODO: file exists?
+            // TODO: configurable sender no-reply@masked-emails.me
+
+            // TODO: attachments
+
             var input = args[0];
             var recipient = args[1];
+            var sender = SENDER;
 
             var message = ParseMimeMessage(input);
-            var forwarded = ForwardTo(message, recipient);
+            var forwarded = ForwardTo(message, sender, recipient);
 
             // redirect console output
 
@@ -28,16 +35,16 @@ namespace make_fwd
             }
         }
 
-        private static MimeMessage ForwardTo(MimeMessage message, string recipient)
+        private static MimeMessage ForwardTo(MimeMessage message, string sender, string recipient)
         {
             var outgoing = new MimeMessage();
-            outgoing.From.Add(new MailboxAddress("Masked Emails", "no-reply@masked-emails.me"));
+            outgoing.From.Add(new MailboxAddress("Masked Emails", sender));
             outgoing.To.Add(new MailboxAddress(recipient, recipient));
             outgoing.Subject = "Fwd: " + message.Subject;
 
             var attachments = GetMessageAttachments(message);
-            var plain = MakeTextBodyPart(message, message.GetPlainTextForwardedHeader());
-            var html = GetHtmlBodyPart(message);
+            var plain = message.MakeForwardedTextPlainPart();
+            var html = message.MakeForwardedHtmlPart();
 
             var messagePart = GetMessagePart(plain, html);
             var hasAttachments = attachments?.Count() > 0;
@@ -64,29 +71,6 @@ namespace make_fwd
 
             return outgoing;
         }
-        private static MimeEntity MakeTextBodyPart(MimeMessage message, string header)
-        {
-            var text = new StringBuilder(header);
-
-            using (var reader = new StringReader(message.TextBody))
-            {
-                var line = "";
-                while ((line = reader.ReadLine()) != null)
-                    text
-                    .Append(INDENT)
-                    .AppendLine(line)
-                    ;
-            }
-
-            var textPart = new TextPart("plain")
-            {
-                ContentTransferEncoding = ContentEncoding.QuotedPrintable,
-                Text = FormatHelper.EncodeQuotedPrintableText(text.ToString()),
-            };
-
-            return textPart;
-        }
-
         private static MimeEntity GetMessagePart(MimeEntity plain, MimeEntity html)
         {
             var hasPlain = plain != null;
@@ -117,25 +101,9 @@ namespace make_fwd
             return message;
         }
 
-        private static MimeEntity GetTextBodyPart(MimeMessage message)
-        {
-            return message.BodyParts.FirstOrDefault(IsTextBodyPart);
-        }
-        private static MimeEntity GetHtmlBodyPart(MimeMessage message)
-        {
-            return message.BodyParts.FirstOrDefault(IsHtmlBodyPart);
-        }
         private static IList<MimePart> GetMessageAttachments(MimeMessage message)
         {
             return new List<MimePart>();
-        }
-        private static bool IsTextBodyPart(MimeEntity arg)
-        {
-            return arg.ContentType.MimeType == "text/plain";
-        }
-        private static bool IsHtmlBodyPart(MimeEntity arg)
-        {
-            return arg.ContentType.MimeType == "text/html";
         }
     }
 }
