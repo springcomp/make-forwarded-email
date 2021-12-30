@@ -49,12 +49,15 @@ namespace make_fwd
             var messagePart = GetMessagePart(plain, html);
             var hasAttachments = attachments?.Count() > 0;
 
-            MimeEntity bodyPart = null;
+            MimeEntity? bodyPart = null;
 
             if (hasAttachments)
             {
+                System.Diagnostics.Debug.Assert(attachments != null);
+
                 // create the multipart/mixed container to hold the multipart/alternative
                 // and the image attachment
+
                 var multipart = new Multipart("mixed");
                 multipart.Add(messagePart);
                 foreach (var attachment in attachments)
@@ -71,7 +74,7 @@ namespace make_fwd
 
             return outgoing;
         }
-        private static MimeEntity GetMessagePart(MimeEntity plain, MimeEntity html)
+        private static MimeEntity? GetMessagePart(MimeEntity? plain, MimeEntity? html)
         {
             var hasPlain = plain != null;
             var hasHtml = html != null;
@@ -94,7 +97,7 @@ namespace make_fwd
 
         private static MimeMessage ParseMimeMessage(string input)
         {
-            MimeMessage message = null;
+            MimeMessage? message = null;
 
             using (var stream = File.OpenRead(input))
                 message = MimeMessage.Load(stream);

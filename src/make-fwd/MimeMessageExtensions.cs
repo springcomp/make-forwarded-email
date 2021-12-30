@@ -9,24 +9,24 @@ namespace make_fwd
 {
     public static class MimeMessageExtensions
     {
-        public static MimeEntity MakeForwardedTextPlainPart(this MimeMessage message)
+        public static MimeEntity? MakeForwardedTextPlainPart(this MimeMessage message)
         {
             return message.MakeForwardedTextPlainPart(
                 message.GetForwardedPlainTextContent()
                 );
         }
-        public static MimeEntity MakeForwardedTextPlainPart(this MimeMessage message, string rawText)
+        public static MimeEntity? MakeForwardedTextPlainPart(this MimeMessage message, string? rawText)
         {
             return rawText == null ? null : MakeTextPart("plain", rawText);
         }
 
-        public static string GetForwardedPlainTextContent(this MimeMessage message)
+        public static string? GetForwardedPlainTextContent(this MimeMessage message)
         {
             return message.GetForwardedPlainTextContent(
                 message.GetForwardedPlainTextHeader()
                 );
         }
-        public static string GetForwardedPlainTextContent(this MimeMessage message, string header)
+        public static string? GetForwardedPlainTextContent(this MimeMessage message, string header)
         {
             var text = message.TextBody;
             if (text == null)
@@ -92,18 +92,18 @@ namespace make_fwd
                 ;
         }
 
-        public static MimeEntity MakeForwardedHtmlPart(this MimeMessage message)
+        public static MimeEntity? MakeForwardedHtmlPart(this MimeMessage message)
         {
             return message.MakeForwardedHtmlPart(
                     message.GetForwardedHtmlDocument()
                     );
         }
-        public static MimeEntity MakeForwardedHtmlPart(this MimeMessage message, string html)
+        public static MimeEntity? MakeForwardedHtmlPart(this MimeMessage message, string? html)
         {
             return html == null ? null : MakeTextPart("html", html);
         }
 
-        public static string GetForwardedHtmlDocument(this MimeMessage message)
+        public static string? GetForwardedHtmlDocument(this MimeMessage message)
         {
             var html = message.HtmlBody;
             if (html == null)
@@ -200,7 +200,7 @@ namespace make_fwd
             };
         }
 
-        public static MimeEntity GetTextBodyPart(this MimeMessage message)
+        public static MimeEntity? GetTextBodyPart(this MimeMessage message)
         {
             return message.BodyParts.FirstOrDefault(IsTextBodyPart);
         }
@@ -208,7 +208,7 @@ namespace make_fwd
         {
             return arg.ContentType.MimeType == "text/plain";
         }
-        public static MimeEntity GetHtmlBodyPart(this MimeMessage message)
+        public static MimeEntity? GetHtmlBodyPart(this MimeMessage message)
         {
             return message.BodyParts.FirstOrDefault(IsHtmlBodyPart);
         }
