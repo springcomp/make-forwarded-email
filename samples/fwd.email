@@ -1,0 +1,142 @@
+Return-Path: <maxime@maskedbox.space>
+Delivered-To: azcjqupd@maskedbox.space
+Received: from mail.maskedbox.space
+	by mail.maskedbox.space with LMTP
+	id Rte/M0umEmAKRAAAbcygvA
+	(envelope-from <maxime@maskedbox.space>)
+	for <azcjqupd@maskedbox.space>; Thu, 28 Jan 2021 11:55:55 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by mail.maskedbox.space (Postfix) with ESMTP id CB4405DF23
+	for <azcjqupd@maskedbox.space>; Thu, 28 Jan 2021 11:55:55 +0000 (UTC)
+Subject: =?UTF-8?Q?Fwd=3a_Voici_un_message_=c3=a9lectronique?=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=maskedbox.space;
+	s=mail; t=1611834955;
+	bh=zk/2hZNTBRZLf+FPHCfDE+gOY9PT30vnzK5KgHyIaVI=;
+	h=Subject:References:To:From:In-Reply-To;
+	b=HkHFj8gtoD/h4Ke4O3Ad/kZ2WGF7Gq+7jaOuQpJT+DQcs7YASoQgx8cRW5CfPxxxK
+	 S0UPxL157OY9wTpBUbnvi+ugZbCEBcm9UQ+Qotr74z/nUg2CPj2TTAevs1bhGxFeWu
+	 2A/7eIrHFsFFr4DGYtaAMEOO4VOZqnB2MUJv0z7nFkLIs7TLk/2m/JaEnDWwnIIlKH
+	 k64OlIo00gI+63PcXrwY+23kICcTJyrI5zNryMlm1UIV8DKG7w6/DRyjIJ1pTorx3J
+	 Ql0c5wPxqX8P04ISl0xIPPqc1W0PsKSnAGu8N2SKd4+66PIUhlJR4vzNyml9nsonjH
+	 0J6uni/mwSmgw==
+References: <PR3PR01MB6827C6B1C7533085857075B182BA9@PR3PR01MB6827.eurprd01.prod.exchangelabs.com>
+To: azcjqupd@maskedbox.space
+From: Maxime Labelle <maxime@maskedbox.space>
+X-Forwarded-Message-Id: <PR3PR01MB6827C6B1C7533085857075B182BA9@PR3PR01MB6827.eurprd01.prod.exchangelabs.com>
+Message-ID: <f3fcdd70-1b26-a5c9-8fde-e9c26b539fd9@maskedbox.space>
+Date: Thu, 28 Jan 2021 12:56:03 +0100
+Mime-Version: 1.0
+In-Reply-To: <PR3PR01MB6827C6B1C7533085857075B182BA9@PR3PR01MB6827.eurprd01.prod.exchangelabs.com>
+Content-Type: multipart/alternative;
+ boundary="------------69ACEA1ADF33F55DDAA8CD68"
+Content-Language: en-US
+
+This is a multi-part message in MIME format.
+--------------69ACEA1ADF33F55DDAA8CD68
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 8bit
+
+
+
+
+-------- Forwarded Message --------
+Subject: 	Voici un message �lectronique
+Date: 	Thu, 28 Jan 2021 11:54:41 +0000
+From: 	Maxime Labelle <obfuscated@outlook.fr>
+To: 	Maxime Labelle <maxime@maskedbox.space>
+
+
+
+Ce message est envoy� depuis Outlook � destination de /maskedbox.space/.
+
+Ceci est pour tester la cha�ne de redirection.
+
+Provenance�: Courrier <https://go.microsoft.com/fwlink/?LinkId=550986> 
+pour Windows 10
+
+
+--------------69ACEA1ADF33F55DDAA8CD68
+Content-Type: text/html; charset=windows-1252
+Content-Transfer-Encoding: 8bit
+
+<html>
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+  </head>
+  <body>
+    <p><br>
+    </p>
+    <div class="moz-forward-container"><br>
+      <br>
+      -------- Forwarded Message --------
+      <table class="moz-email-headers-table" cellspacing="0"
+        cellpadding="0" border="0">
+        <tbody>
+          <tr>
+            <th valign="BASELINE" nowrap="nowrap" align="RIGHT">Subject:
+            </th>
+            <td>Voici un message �lectronique</td>
+          </tr>
+          <tr>
+            <th valign="BASELINE" nowrap="nowrap" align="RIGHT">Date: </th>
+            <td>Thu, 28 Jan 2021 11:54:41 +0000</td>
+          </tr>
+          <tr>
+            <th valign="BASELINE" nowrap="nowrap" align="RIGHT">From: </th>
+            <td>Maxime Labelle <a class="moz-txt-link-rfc2396E" href="mailto:obfuscated@outlook.fr">&lt;obfuscated@outlook.fr&gt;</a></td>
+          </tr>
+          <tr>
+            <th valign="BASELINE" nowrap="nowrap" align="RIGHT">To: </th>
+            <td>Maxime Labelle <a class="moz-txt-link-rfc2396E" href="mailto:maxime@maskedbox.space">&lt;maxime@maskedbox.space&gt;</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <br>
+      <meta http-equiv="Content-Type" content="text/html;
+        charset=windows-1252">
+      <meta name="Generator" content="Microsoft Word 15 (filtered
+        medium)">
+      <style><!--
+/* Font Definitions */
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;}
+.MsoChpDefault
+	{mso-style-type:export-only;}
+@page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:70.85pt 70.85pt 70.85pt 70.85pt;}
+div.WordSection1
+	{page:WordSection1;}
+--></style>
+      <div class="WordSection1">
+        <p class="MsoNormal">Ce message est envoy� depuis Outlook �
+          destination de <i>maskedbox.space</i>.</p>
+        <p class="MsoNormal">Ceci est pour tester la cha�ne de
+          redirection.</p>
+        <p class="MsoNormal"><o:p>�</o:p></p>
+        <p class="MsoNormal">Provenance�: <a
+            href="https://go.microsoft.com/fwlink/?LinkId=550986"
+            moz-do-not-send="true">
+            Courrier</a> pour Windows 10</p>
+        <p class="MsoNormal"><o:p>�</o:p></p>
+      </div>
+    </div>
+  </body>
+</html>
+
+--------------69ACEA1ADF33F55DDAA8CD68--
