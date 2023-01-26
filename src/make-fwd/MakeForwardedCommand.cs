@@ -66,7 +66,7 @@ namespace make_fwd
             var helper = new MakeForwardedMessageHelper(from, to);
             var forwarded = helper.ForwardTo(message);
 
-            if (output != "<STDOUT>")
+            if (output == "<STDOUT>")
             {
                 // redirect console output
 
@@ -75,6 +75,15 @@ namespace make_fwd
                     forwarded.WriteTo(memoryStream);
                     Console.Out.Write(Encoding.ASCII.GetString(memoryStream.ToArray()));
                 }
+            }
+
+            else
+            {
+                var file = Path.GetFileName(message);
+                var path = Path.Join(output, file);
+
+                using (var fileStream = File.Open(path, FileMode.Create, FileAccess.Write, FileShare.Read))
+                    forwarded.WriteTo(fileStream);
             }
 
             return 0;

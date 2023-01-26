@@ -8,8 +8,8 @@ namespace make_fwd
         private readonly string sender_;
 
         public MakeForwardedMessageHelper(
-            string recipient,
-            string sender
+            string sender,
+            string recipient
         )
         {
             recipient_ = recipient;
